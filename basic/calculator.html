@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Caluclator</title>
+</head>
+<body>
+
+<input type="text" id="myInput" placeholder="Type First number"><br>
+<input type="text" id="myInput2" placeholder="Type second number"><br>
+
+<label for="calculator">Choose a method:</label>
+<select id="method" name="method">
+  <option value="add">Addition</option>
+  <option value="sub">Substraction</option>
+  <option value="multi">Multiplication</option>
+  <option value="divi">Division</option>
+</select><br>
+
+<button onclick="getValue(); getDropDataCalc(); doCalculation();">Get Value</button><br>
+<input type="text" id="outputBox" placeholder="Output will appear here">
+
+
+<script>
+let inputValue, inputValue2, dropdown, selectedValue, inputsum;
+
+function getValue() {
+  inputValue = document.getElementById('myInput').value;
+  inputValue2 = document.getElementById('myInput2').value;
+}
+
+function getDropDataCalc() {
+  dropdown = document.getElementById('method');
+  selectedValue = dropdown.value;
+}
+
+
+function doCalculation() {
+if (selectedValue == "add") {
+  	inputsum = parseInt(inputValue) + parseInt(inputValue2);
+  
+  } else if (selectedValue == "sub") {
+  	inputsum = parseInt(inputValue) - parseInt(inputValue2);
+  
+  } else if (selectedValue == "multi") {
+  	inputsum = parseInt(inputValue) * parseInt(inputValue2);
+  } else {
+  	inputsum = parseInt(inputValue) / parseInt(inputValue2);
+  }
+
+  document.getElementById('outputBox').value = inputsum;
+}
+
+</script>
+</body>
+</html>
