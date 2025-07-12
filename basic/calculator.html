@@ -36,15 +36,15 @@ function getDropDataCalc() {
 
 function doCalculation() {
 if (selectedValue == "add") {
-  	inputsum = parseInt(inputValue) + parseInt(inputValue2);
+  	inputsum = parseFloat(inputValue) + parseFloat(inputValue2);
   
   } else if (selectedValue == "sub") {
-  	inputsum = parseInt(inputValue) - parseInt(inputValue2);
+  	inputsum = parseFloat(inputValue) - parseFloat(inputValue2);
   
   } else if (selectedValue == "multi") {
-  	inputsum = parseInt(inputValue) * parseInt(inputValue2);
+  	inputsum = parseFloat(inputValue) * parseFloat(inputValue2);
   } else {
-  	inputsum = parseInt(inputValue) / parseInt(inputValue2);
+  	inputsum = parseFloat(inputValue) / parseFloat(inputValue2);
   }
 
   document.getElementById('outputBox').value = inputsum;
