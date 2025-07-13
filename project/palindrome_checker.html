@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Palindrome Checker</title>
+</head>
+<body>
+<h3>Palindrome Checker</h3>
+<input type="text" id="myInput" placeholder="Type First number"><br>
+
+<button onclick="checkPal();">Check if its Palindrome</button><br>
+
+<p id="output"></p>
+
+
+<script>
+let inputValue, revValue, result;
+
+function checkPal() {
+	inputValue = document.getElementById('myInput').value;
+
+	revValue = inputValue.split('').reverse().join('');
+
+	if (inputValue == revValue) {
+		result = "The text is a Palindrome"
+	} else {
+		result = "The text is not a Palindrome"
+	}
+
+document.getElementById("output").innerHTML = result;	
+}
+
+</script>>
+</body>
+</html>

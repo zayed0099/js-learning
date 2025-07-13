@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Movie data Importer IMDB</title>
+	   <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container">
+	<div class="box">
+			<center><h1>IMDB Data Importer</h1>
+			<p>Go to <a href="https://www.imdb.com/">IMDB</a> and get the movie ID and enter it here.</p>
+			</center>
+		
+		<input type="text" id="imdbid" placeholder="Enter ID">
+		<input type="text" id="apikey" placeholder="Enter Key">
+		<button onclick="getData();">Get Data</button><br>
+		<br>
+		
+		<div class="myDiv" id="output"></div>
+	</div>
+</div>
+<script src="movie_imdb.js"></script>
+
+</body>
+</html>
