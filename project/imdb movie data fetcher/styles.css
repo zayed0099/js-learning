@@ -48,4 +48,32 @@ button:active {
   background: #000;
 }
 
+#output {
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 10px;
+  width: 500px;
+  margin-top: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: left;
+  color: #E0E0E0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+}
+
+#output b {
+  display: inline-block;
+  width: 100px; /* align labels */
+  color: #E0E0E0;
+}
+
+#output a {
+  color: #E0E0E1;
+  text-decoration: none;
+}
+
+#output a:hover {
+  text-decoration: underline;
+}
+
 
