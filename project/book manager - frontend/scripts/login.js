@@ -1,16 +1,14 @@
 document.getElementById('sendDataBtn').addEventListener('click', () => {
 
 	const username = document.getElementById('usernameInput').value;
-	const email = document.getElementById('emailInput').value;
 	const password = document.getElementById('passInput').value;
 
 	const dataToSend = {
 		username : username,
-		password : password,
-		email : email 
+		password : password
 	};
 	
-	fetch('http://127.0.0.1:5000/auth/v1/register', {
+	fetch('http://127.0.0.1:5000/auth/v1/login', {
 		method: 'POST',
 		headers: {
             'Content-Type': 'application/json'
@@ -32,4 +30,8 @@ document.getElementById('sendDataBtn').addEventListener('click', () => {
 		alert('Failed to send data.')
 	});
 
+});
+
+document.getElementById("signupBtn").addEventListener("click", () => {
+  window.location.href = "signup.html";
 });
