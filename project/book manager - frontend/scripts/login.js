@@ -30,8 +30,38 @@ document.getElementById('sendDataBtn').addEventListener('click', () => {
 	})
 	.catch(error => {
 		console.error('There was a problem with the fetch operation:', error);
-		alert('Failed to send data.')
+		// alert('Failed to send data.')
 	});
+
+
+	// get req to make sure the user is valid
+	const token = localStorage.getItem('jwtToken');
+
+	fetch('http://127.0.0.1:5000/auth/v1/check', {
+			method: 'GET' ,
+			headers: {
+				'Authorization': `Bearer ${token}`
+			}
+	})
+		.then(response => {
+			if (!response.ok){
+				throw new Error('Network response was not ok.');
+			}
+			return response.json();
+	})
+		.then(data => {
+	    // Check your "message" field
+	    if (data.message === "Valid") {
+	        console.log("User is valid, ID:", data.user_id);
+	  		window.location.href = "book_cr.html";      
+	    } else {
+	        console.log("Invalid user");
+	    }
+	})
+		.catch(error => {
+	    console.error("Error:", error);
+	});
+
 
 });
 

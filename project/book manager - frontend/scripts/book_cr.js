@@ -42,3 +42,9 @@ document.getElementById('sendDataBtn').addEventListener('click', () => {
 	document.getElementById('genreInput').value = "";
 
 });
+
+document.getElementById("logout").addEventListener("click", () => {
+  localStorage.removeItem('jwtToken');
+
+  window.location.href = "login.html";
+});
