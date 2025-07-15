@@ -23,7 +23,10 @@ document.getElementById('sendDataBtn').addEventListener('click', () => {
 	})
 	.then(data => {
 		console.log('Server Response:', data);
-		alert('Data sent successfully');
+
+		// extracting it from response and saving it in local storage
+    	const accessToken = data.access_token;
+    	localStorage.setItem('jwtToken', accessToken);
 	})
 	.catch(error => {
 		console.error('There was a problem with the fetch operation:', error);
