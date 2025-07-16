@@ -82,15 +82,34 @@ document.addEventListener('DOMContentLoaded', () => {
                 genreCell.textContent = item.genre;
                 row.appendChild(genreCell);
 
+                // Show more (Edit + Delete + Favourites)
+				// ✅ Add "Show More" button cell
+				const buttonCell = document.createElement('td');
+				const showMoreBtn = document.createElement('button');
+				showMoreBtn.textContent = 'Show More';
+
+				// Add event listener for button click
+				showMoreBtn.addEventListener('click', () => {
+				    alert(
+				        `Title: ${item.title}\nAuthor: ${item.author}\nGenre: ${item.genre}`
+				    );
+				});
+
+				buttonCell.appendChild(showMoreBtn);
+				row.appendChild(buttonCell);
+                
+                // Appending all those data
                 tableBody.appendChild(row);
             });
         })
         .catch(error => {
             console.error('Error fetching data:', error);
-            tableBody.innerHTML = '<tr><td colspan="3">Error loading data.</td></tr>';
+            tableBody.innerHTML = '<tr><td colspan="3"><i>Error loading data.</i></td></tr>';
         });
 });
 
+
+// Logout Button
 document.getElementById("logout").addEventListener("click", () => {
   localStorage.removeItem('jwtToken');
   window.location.href = "login.html";
