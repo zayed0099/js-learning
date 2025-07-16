@@ -30,6 +30,7 @@ document.getElementById('sendDataBtn').addEventListener('click', () => {
 		.then(data => {
 			console.log('Server Response:', data);
 			alert('Data sent successfully');
+			location.reload(); // This refreshes the page
 		})
 		.catch(error => {
 			console.error('There was a problem with the fetch operation:', error);
@@ -47,7 +48,7 @@ document.getElementById('sendDataBtn').addEventListener('click', () => {
 
 document.addEventListener('DOMContentLoaded', () => {
 	const token = localStorage.getItem('jwtToken');
-    const tableBody = document.getElementById('tableBody');
+    const tableBody = document.getElementById('dataTableBody');
     const apiUrl = 'http://127.0.0.1:5000/api/v1/books'; // Example API endpoint
 
     fetch(apiUrl, {
@@ -57,7 +58,16 @@ document.addEventListener('DOMContentLoaded', () => {
 		})
         .then(response => response.json())
         .then(data => {
-            data.forEach(item => {
+        	console.log(data);
+        	const books = data.books; // get the array from inside the object
+
+			    if (!Array.isArray(books)) {
+			        console.error('Expected books array, got:', data);
+			        tableBody.innerHTML = '<tr><td colspan="3">No books found or error occurred.</td></tr>';
+			        return;
+			    }
+
+            books.forEach(item => {
                 const row = document.createElement('tr');
 
                 const titleCell = document.createElement('td');
