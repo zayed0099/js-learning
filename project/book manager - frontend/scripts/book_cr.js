@@ -114,3 +114,7 @@ document.getElementById("logout").addEventListener("click", () => {
   localStorage.removeItem('jwtToken');
   window.location.href = "login.html";
 });
+
+document.getElementById("details").addEventListener("click", () => {
+  window.location.href = "book_rudf.html";
+});
