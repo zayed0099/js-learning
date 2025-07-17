@@ -130,8 +130,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
                   buttonCell3.appendChild(delFavBtn);
                   row.appendChild(buttonCell3); // delete from Favourite button ends                
-                
-                // Appending all those data
+              
+
+              // Code for Updating
+
+    
+    // Appending all those data
               tableBody.appendChild(row);
             });
         })

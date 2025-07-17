@@ -118,3 +118,7 @@ document.getElementById("logout").addEventListener("click", () => {
 document.getElementById("details").addEventListener("click", () => {
   window.location.href = "book_rudf.html";
 });
+
+document.getElementById("recover").addEventListener("click", () => {
+  window.location.href = "recovery.html";
+});
