@@ -142,6 +142,10 @@ document.addEventListener('DOMContentLoaded', () => {
                   showModal(item); // this function will open the modal and populate it
               });
 
+              submitChanges.addEventListener('click', () => {
+                  updateReq(item); // this function will open the modal and populate it
+              });
+
               updateCell.appendChild(updateBtn);
               row.appendChild(updateCell);
 
@@ -180,46 +184,6 @@ function showModal(book) {
   modalAuthor.textContent = "Author: " + book.author;
   modalGenre.textContent = "Genre: " + book.genre;
   modal.style.display = "flex";
-
-submitBtn.addEventListener("click", () => {
-  modal.style.display = "none";
-  
-const titleCng = document.getElementById('modalTitlecng').value.trim();
-const authorCng = document.getElementById('modalAuthorcng').value.trim();
-const genreCng = document.getElementById('modalGenrecng').value.trim();
-
-let dataToSend = {};
-
-if (titleCng) {
-  dataToSend.title = titleCng;
-}
-if (authorCng) {
-  dataToSend.author = authorCng;
-}
-if (genreCng) {
-  dataToSend.genre = genreCng;
-}
-
-const url_update_data = `http://127.0.0.1:5000/api/v1/favourites/${book.id}`;
-
-fetch(url_update_data, {
-  method: 'PATCH', // or 'PATCH' if updating
-  headers: {
-    'Content-Type': 'application/json',
-    'Authorization': `Bearer ${token_}` // if using JWT
-  },
-  body: JSON.stringify(dataToSend)
-})
-.then(response => response.json())
-.then(data => {
-  console.log('Success:', data);
-  alert('Data updated successfully')
-})
-.catch(error => {
-  console.error('Error:', error);
-});
-
-}); // for submitBtn
 } // for function
 
 closeBtn.addEventListener("click", () => {
@@ -231,3 +195,44 @@ window.addEventListener("click", (e) => {
     modal.style.display = "none";
   }
 });
+
+
+function updateReq(item) {
+  const titleCng = document.getElementById('modalTitlecng').value.trim();
+  const authorCng = document.getElementById('modalAuthorcng').value.trim();
+  const genreCng = document.getElementById('modalGenrecng').value.trim();
+
+  let dataToSend = {};
+
+  if (titleCng) {
+    dataToSend.title = titleCng;
+  }
+  if (authorCng) {
+    dataToSend.author = authorCng;
+  }
+  if (genreCng) {
+    dataToSend.genre = genreCng;
+  }
+
+  const url_update_data = `http://127.0.0.1:5000/api/v1/books/${item.id}`;
+
+  fetch(url_update_data, {
+    method: 'PATCH', // or 'PATCH' if updating
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token_}` // if using JWT
+    },
+    body: JSON.stringify(dataToSend)
+  })
+  .then(response => response.json())
+  .then(data => {
+    console.log('Success:', data);
+    alert('Data updated successfully')
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
+
+}; // for submitBtn
+
+
