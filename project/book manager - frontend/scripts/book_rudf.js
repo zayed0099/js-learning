@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-	const token = localStorage.getItem('jwtToken');
+	  const token = localStorage.getItem('jwtToken');
     const tableBody = document.getElementById('dataTableBody');
     const apiUrl = 'http://127.0.0.1:5000/api/v1/books'; // Example API endpoint
 
@@ -134,16 +134,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
               // Code for Updating
               // Code for Show More button (modal)
-              const showMoreCell = document.createElement('td');
-              const showMoreBtn = document.createElement('button');
-              showMoreBtn.textContent = 'Show More';
+              const updateCell = document.createElement('td');
+              const updateBtn = document.createElement('button');
+              updateBtn.textContent = 'Update';
 
-              showMoreBtn.addEventListener('click', () => {
+              updateBtn.addEventListener('click', () => {
                   showModal(item); // this function will open the modal and populate it
               });
 
-              showMoreCell.appendChild(showMoreBtn);
-              row.appendChild(showMoreCell);
+              updateCell.appendChild(updateBtn);
+              row.appendChild(updateCell);
 
     // Appending all those data
               tableBody.appendChild(row);
@@ -163,6 +163,7 @@ document.getElementById("logout").addEventListener("click", () => {
 });
 
 
+
 // Show modal code
 // Modal control logic
 const modal = document.getElementById("modal");
@@ -170,13 +171,56 @@ const closeBtn = document.getElementById("closeBtn");
 const modalTitle = document.getElementById("modalTitle");
 const modalAuthor = document.getElementById("modalAuthor");
 const modalGenre = document.getElementById("modalGenre");
+const submitBtn = document.getElementById("submitChanges");
+
+const token_ = localStorage.getItem('jwtToken');
 
 function showModal(book) {
   modalTitle.textContent = book.title;
   modalAuthor.textContent = "Author: " + book.author;
   modalGenre.textContent = "Genre: " + book.genre;
   modal.style.display = "flex";
+
+submitBtn.addEventListener("click", () => {
+  modal.style.display = "none";
+  
+const titleCng = document.getElementById('modalTitlecng').value.trim();
+const authorCng = document.getElementById('modalAuthorcng').value.trim();
+const genreCng = document.getElementById('modalGenrecng').value.trim();
+
+let dataToSend = {};
+
+if (titleCng) {
+  dataToSend.title = titleCng;
 }
+if (authorCng) {
+  dataToSend.author = authorCng;
+}
+if (genreCng) {
+  dataToSend.genre = genreCng;
+}
+
+const url_update_data = `http://127.0.0.1:5000/api/v1/favourites/${book.id}`;
+
+fetch(url_update_data, {
+  method: 'PATCH', // or 'PATCH' if updating
+  headers: {
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${token_}` // if using JWT
+  },
+  body: JSON.stringify(dataToSend)
+})
+.then(response => response.json())
+.then(data => {
+  console.log('Success:', data);
+  alert('Data updated successfully')
+})
+.catch(error => {
+  console.error('Error:', error);
+});
+
+}); // for submitBtn
+} // for function
 
 closeBtn.addEventListener("click", () => {
   modal.style.display = "none";
