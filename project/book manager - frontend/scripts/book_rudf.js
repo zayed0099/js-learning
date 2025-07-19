@@ -1,3 +1,5 @@
+let selectedbook = null;
+
 document.addEventListener('DOMContentLoaded', () => {
 	  const token = localStorage.getItem('jwtToken');
     const tableBody = document.getElementById('dataTableBody');
@@ -139,11 +141,8 @@ document.addEventListener('DOMContentLoaded', () => {
               updateBtn.textContent = 'Update';
 
               updateBtn.addEventListener('click', () => {
+                  selectedbook = item
                   showModal(item); // this function will open the modal and populate it
-              });
-
-              submitChanges.addEventListener('click', () => {
-                  updateReq(item); // this function will open the modal and populate it
               });
 
               updateCell.appendChild(updateBtn);
@@ -197,24 +196,22 @@ window.addEventListener("click", (e) => {
 });
 
 
-function updateReq(item) {
+submitBtn.addEventListener('click', () => {
   const titleCng = document.getElementById('modalTitlecng').value.trim();
   const authorCng = document.getElementById('modalAuthorcng').value.trim();
   const genreCng = document.getElementById('modalGenrecng').value.trim();
 
   let dataToSend = {};
 
-  if (titleCng) {
-    dataToSend.title = titleCng;
-  }
-  if (authorCng) {
-    dataToSend.author = authorCng;
-  }
-  if (genreCng) {
-    dataToSend.genre = genreCng;
-  }
+  if (titleCng) {dataToSend.title = titleCng;}
+  if (authorCng) {dataToSend.author = authorCng;}
+  if (genreCng) {dataToSend.genre = genreCng;}
 
-  const url_update_data = `http://127.0.0.1:5000/api/v1/books/${item.id}`;
+  if (!selectedbook) {
+    alert("No book selected for update.");
+    return;}
+
+  const url_update_data = `http://127.0.0.1:5000/api/v1/books/${selectedbook.id}`;
 
   fetch(url_update_data, {
     method: 'PATCH', // or 'PATCH' if updating
@@ -228,11 +225,12 @@ function updateReq(item) {
   .then(data => {
     console.log('Success:', data);
     alert('Data updated successfully')
+    selectedbook = null;
   })
   .catch(error => {
     console.error('Error:', error);
   });
 
-}; // for submitBtn
+}); // for submitBtn
 
 
