@@ -133,8 +133,18 @@ document.addEventListener('DOMContentLoaded', () => {
               
 
               // Code for Updating
+              // Code for Show More button (modal)
+              const showMoreCell = document.createElement('td');
+              const showMoreBtn = document.createElement('button');
+              showMoreBtn.textContent = 'Show More';
 
-    
+              showMoreBtn.addEventListener('click', () => {
+                  showModal(item); // this function will open the modal and populate it
+              });
+
+              showMoreCell.appendChild(showMoreBtn);
+              row.appendChild(showMoreCell);
+
     // Appending all those data
               tableBody.appendChild(row);
             });
@@ -150,4 +160,30 @@ document.addEventListener('DOMContentLoaded', () => {
 document.getElementById("logout").addEventListener("click", () => {
   localStorage.removeItem('jwtToken');
   window.location.href = "login.html";
+});
+
+
+// Show modal code
+// Modal control logic
+const modal = document.getElementById("modal");
+const closeBtn = document.getElementById("closeBtn");
+const modalTitle = document.getElementById("modalTitle");
+const modalAuthor = document.getElementById("modalAuthor");
+const modalGenre = document.getElementById("modalGenre");
+
+function showModal(book) {
+  modalTitle.textContent = book.title;
+  modalAuthor.textContent = "Author: " + book.author;
+  modalGenre.textContent = "Genre: " + book.genre;
+  modal.style.display = "flex";
+}
+
+closeBtn.addEventListener("click", () => {
+  modal.style.display = "none";
+});
+
+window.addEventListener("click", (e) => {
+  if (e.target === modal) {
+    modal.style.display = "none";
+  }
 });

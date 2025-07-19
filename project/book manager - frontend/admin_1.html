@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<style>
+	.container {
+  display: flex; /* Enables flexbox layout */
+  height: 100vh; /* Make the container take the full viewport height */
+  width: 100%; /* Make the container take the full viewport width */
+}
+
+.column {
+  flex: 1; /* Each column takes an equal amount of available space */
+  /* or specify width: 33.33%; for each for equal width */
+  border: 1px solid black; /* For visual separation */
+  padding: 10px; /* Add some padding inside the columns */
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  
+  <div class="column" id="col1"></div>
+  
+  <div class="column" id="col2">Column 2</div>
+  
+  <div class="column" id="col3">Column 3</div>
+
+</div>
+
+<script src="scripts/admin_1.js"></script>
+</body>
+</html>
