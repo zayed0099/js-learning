@@ -15,9 +15,26 @@
         input[type="text"] {
 		  color: blue;
 		  width: 30%;
+		}
+		.top-bar {
+	      background-color: #f1f1f1; /* Light gray */
+	      padding: 15px;
+	      text-align: center;
+	      font-weight: bold;
+	      border-bottom: 1px solid #ccc;
+	    }
+	   
     </style>
 </head>
 <body>
+	
+  <div class="top-bar">
+    <button id="details">Details</button>
+
+	<button id="recover">Recover</button>
+
+	<button id="favdel">See All</button>
+  </div>
 <center>
 	<h2>Add New Book</h2>
 
@@ -28,12 +45,6 @@
 	<input type="text" id="genreInput" placeholder="Enter genre"><br><br>
 	
 	<button id="sendDataBtn">Submit</button><br><br>
-
-	<button id="details">Details</button>
-
-	<button id="recover">Recover</button>
-
-	<button id="favdel">See All</button><br>
 	
 		<h2>All Books</h2>
 		<br>
@@ -53,8 +64,10 @@
 
 	<button id="logout">Logout</button>
 
-	
+<br><br>
+<a href="admin.html">Admin Panel</a>
 </center>
+
 <script src="scripts/book_cr.js"></script>
 </body>
 </html>

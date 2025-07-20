@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Page</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      height: 100vh;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 220px;
+      background-color: #f1f1f1;
+      border-right: 1px solid #ccc;
+      padding: 20px;
+    }
+
+    .sidebar h2 {
+      margin-bottom: 20px;
+    }
+
+    .sidebar a {
+      display: block;
+      margin-bottom: 15px;
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+    }
+
+    .sidebar a:hover {
+      color: #007bff;
+    }
+
+    /* Main content area */
+    .main-content {
+      flex: 1;
+      padding: 40px;
+      background-color: #fff;
+    }
+
+    .main-content h1 {
+      font-size: 2rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h2>Admin Panel</h2>
+    <a href="user.html">User</a>
+    <a href="admin.html">Admin</a>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <h1>User Page</h1>
+    <p>Admin page for managing user related tasks.</p>
+    
+    <!-- Gonna add pagination later -->
+      <div id="showBooks">
+        
+
+      </div>
+
+
+  </div>
+
+</body>
+</html>
