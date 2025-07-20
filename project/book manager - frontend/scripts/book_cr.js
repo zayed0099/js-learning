@@ -122,3 +122,7 @@ document.getElementById("details").addEventListener("click", () => {
 document.getElementById("recover").addEventListener("click", () => {
   window.location.href = "recovery.html";
 });
+
+document.getElementById("favdel").addEventListener("click", () => {
+  window.location.href = "showfav.html";
+});
