@@ -78,25 +78,60 @@
     <p>Admin page for managing admin related task.</p>
     <br>
     
-    <div id="showBooksAll">
-      <h3 style="color: red; text-align: center;">Books of All Users.</h3><br>
-
-      <center>
+    <div id='showAdminAll'>
+      <center><h3 style="color: red; text-align: center;">All Admins.<h3>
+        <br>
         <table>
           <thead>
-            <tr>
-              <th>Title</th>
-              <th>Author</th>
-              <th>Is Del</th>
-              <th>User ID</th>
-            </tr>  
+            <th>Username</th>
+            <th>Email</th>
           </thead>
-          <tbody id="allUserBooks"></tbody>  
+          <tbody id='userTable'>
+          </tbody>
         </table>
-      </center>
+      </center>  
     </div>
 
+    <br><br>
+
+    <div id='manageAdmin'>
+      <center><h3 style="color: red; text-align: center;">Manage Admins<h3>
+        <br>
+        <table>
+          <thead>
+            <th>Username</th>
+            <th>Email</th>
+            <th></th>
+          </thead>
+          <tbody id='userTable'>
+          </tbody>
+        </table>
+      </center>  
+    </div>
+
+</div> <!-- div end for main content -->
+
+<div id="modal" class="modal" style="display:none;">
+    <div class="modal-content">
+      <span id="closeBtn">&times;</span>
+      
+      <p id="modalTitle"></p>
+      <p id="modalAuthor"></p>
+      <p id="modalGenre"></p>
+
+      <label for="options">Choose Role</label>
+      <select name="cars" id="cars">
+        <option value="admin">Admin</option>
+        <option value="user">user</option>
+      </select>
+
+      <div style="text-align: center; margin-top: 20px;">
+        <button type="submit" id="submitChanges">Submit</button>
+      </div>  
+  
   </div>
+</div>
+
 
 <script src="scripts/admin.js"></script>
 </body>

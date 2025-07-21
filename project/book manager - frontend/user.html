@@ -50,6 +50,15 @@
     .main-content h1 {
       font-size: 2rem;
     }
+     table {
+      width: 70%;
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid black;
+      padding: 8px;
+      text-align: center;
+    }
   </style>
 </head>
 <body>
@@ -59,21 +68,35 @@
     <h2>Admin Panel</h2>
     <a href="user.html">User</a>
     <a href="admin.html">Admin</a>
+    <h2>User Panel</h2>
+    <a href="book_cr.html">Dashboard</a>
   </div>
-
+<br>
   <!-- Main Content -->
   <div class="main-content">
     <h1>User Page</h1>
     <p>Admin page for managing user related tasks.</p>
     
     <!-- Gonna add pagination later -->
-      <div id="showBooks">
-        
-
+      <div id="showBooksAll">
+        <h3 style="color: red; text-align: center;">Books of All Users.</h3><br>
+          <center>
+            <table>
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>Author</th>
+                  <th>Is Del</th>
+                  <th>User ID</th>
+                </tr>  
+               </thead>
+              <tbody id="allUserBooks"></tbody>  
+            </table>
+          </center>
+        <br><br>
       </div>
-
-
   </div>
 
+<script src="scripts/user.js"></script>
 </body>
 </html>
