@@ -59,6 +59,33 @@
       padding: 8px;
       text-align: center;
   }
+  /*modal part*/
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+        }
+          .modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            width: 300px;
+            position: relative;
+        }
+          #closeBtn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            cursor: pointer;
+            font-size: 20px;
+        }
   </style>
 </head>
 <body>
@@ -80,22 +107,7 @@
     
     <div id='showAdminAll'>
       <center><h3 style="color: red; text-align: center;">All Admins.<h3>
-        <br>
-        <table>
-          <thead>
-            <th>Username</th>
-            <th>Email</th>
-          </thead>
-          <tbody id='userTable'>
-          </tbody>
-        </table>
-      </center>  
-    </div>
-
-    <br><br>
-
-    <div id='manageAdmin'>
-      <center><h3 style="color: red; text-align: center;">Manage Admins<h3>
+        <h5><i>Don't open the update menu unless you want to change roles!</i></h5>
         <br>
         <table>
           <thead>
@@ -109,20 +121,20 @@
       </center>  
     </div>
 
-</div> <!-- div end for main content -->
+    <br><br>
+
 
 <div id="modal" class="modal" style="display:none;">
     <div class="modal-content">
       <span id="closeBtn">&times;</span>
       
-      <p id="modalTitle"></p>
-      <p id="modalAuthor"></p>
-      <p id="modalGenre"></p>
-
+      <p id="modalUsername"></p>
+      <p id="modalEmail"></p>
+      
       <label for="options">Choose Role</label>
-      <select name="cars" id="cars">
+      <select name="roles" id="roles">
         <option value="admin">Admin</option>
-        <option value="user">user</option>
+        <option value="user">User</option>
       </select>
 
       <div style="text-align: center; margin-top: 20px;">
@@ -132,6 +144,8 @@
   </div>
 </div>
 
+
+</div> <!-- div end for main content -->
 
 <script src="scripts/admin.js"></script>
 </body>

@@ -37,7 +37,7 @@ headers: {
     updateBtn.textContent = 'Update';
 
     updateBtn.addEventListener('click', () => {
-        selectedbook = item
+        selectedadmin = item
         showModal(item); // this function will open the modal and populate it
     });
 
@@ -57,17 +57,13 @@ headers: {
 // Modal control logic
 const modal = document.getElementById("modal");
 const closeBtn = document.getElementById("closeBtn");
-const modalTitle = document.getElementById("modalTitle");
-const modalAuthor = document.getElementById("modalAuthor");
-const modalGenre = document.getElementById("modalGenre");
+const modalUsername = document.getElementById("modalUsername");
+const modalEmail = document.getElementById("modalEmail");
 const submitBtn = document.getElementById("submitChanges");
 
-const token_ = localStorage.getItem('jwtToken');
-
-function showModal(book) {
-  modalTitle.textContent = book.title;
-  modalAuthor.textContent = "Author: " + book.author;
-  modalGenre.textContent = "Genre: " + book.genre;
+function showModal(admin) {
+  modalUsername.textContent = "Username: " + admin.username;
+  modalEmail.textContent = "Email: " + admin.email;
   modal.style.display = "flex";
 } // for function
 
@@ -83,38 +79,30 @@ window.addEventListener("click", (e) => {
 
 
 submitBtn.addEventListener('click', () => {
-  const titleCng = document.getElementById('modalTitlecng').value.trim();
-  const authorCng = document.getElementById('modalAuthorcng').value.trim();
-  const genreCng = document.getElementById('modalGenrecng').value.trim();
+  const selectedRole = document.getElementById('roles').value;
 
-  let dataToSend = {};
-
-  if (titleCng) {dataToSend.title = titleCng;}
-  if (authorCng) {dataToSend.author = authorCng;}
-  if (genreCng) {dataToSend.genre = genreCng;}
-
-  if (!selectedbook) {
-    alert("No book selected for update.");
+  if (!selectedadmin) {
+    alert("No admin selected for update.");
     return;}
 
-  const url_update_data = `http://127.0.0.1:5000/api/v1/books/${selectedbook.id}`;
+  if (selectedRole === 'user') {
+      const url_update_admin = `http://127.0.0.1:5000/a/v1/manage/${selectedadmin.id}`;
+      fetch(url_update_admin, {
+        method: 'DELETE', // or 'PATCH' if updating
+        headers: {
+          'Authorization': `Bearer ${token}` // if using JWT
+        }
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Success:', data);
+        alert(`${selectedadmin.username} removed from admin successfully`)
+        selectedadmin = null;
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+} // if ends
 
-  fetch(url_update_data, {
-    method: 'PATCH', // or 'PATCH' if updating
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token_}` // if using JWT
-    },
-    body: JSON.stringify(dataToSend)
-  })
-  .then(response => response.json())
-  .then(data => {
-    console.log('Success:', data);
-    alert('Data updated successfully')
-    selectedbook = null;
-  })
-  .catch(error => {
-    console.error('Error:', error);
-  });
 
-}); // for submitBtn
+}); // to end the eventlistener added in submit button
