@@ -1,4 +1,12 @@
 
+// 🔐 Check authentication before anything else
+const token = localStorage.getItem('jwtToken');
+if (!token) {
+    alert("You must be logged in to use this app.");
+    window.location.href = "login.html";
+}
+
+
 document.getElementById('sendDataBtn').addEventListener('click', () => {
 
 	const title = document.getElementById('titleInput').value;

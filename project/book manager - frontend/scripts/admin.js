@@ -1,8 +1,12 @@
+// 🔐 Check authentication before anything else
+const token = localStorage.getItem('jwtToken');
+if (!token) {
+    alert("You must be logged in to use this app.");
+    window.location.href = "login.html";
+}
+
 // console.log('connected')
 let selectedadmin = null;
-
-const token = localStorage.getItem('jwtToken');; // or set it manually
-
 
         // Code for table with admin
 const tableBody2 = document.getElementById('userTable');

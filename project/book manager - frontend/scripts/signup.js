@@ -1,3 +1,4 @@
+
 document.getElementById('sendDataBtn').addEventListener('click', () => {
 
 	const username = document.getElementById('usernameInput').value;

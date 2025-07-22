@@ -1,7 +1,13 @@
+// 🔐 Check authentication before anything else
+const token = localStorage.getItem('jwtToken');
+if (!token) {
+    alert("You must be logged in to use this app.");
+    window.location.href = "login.html";
+}
+
 // console.log('connected')
 let selecteduser = null;
 
-const token = localStorage.getItem('jwtToken');; // or set it manually
 const tableBody1 = document.getElementById('allUserBooks'); 
 
 fetch('http://127.0.0.1:5000/a/v1/books', {
@@ -152,8 +158,8 @@ submitBtn.addEventListener('click', () => {
       .then(response => response.json())
       .then(data => {
         console.log('Success:', data);
-        alert(`${selectedadmin.username} has been banned from the site.`)
-        selectedadmin = null;
+        alert(`${selecteduser.username} has been banned from the site.`)
+        selecteduser = null;
       })
       .catch(error => {
         console.error('Error:', error);
@@ -171,8 +177,8 @@ submitBtn.addEventListener('click', () => {
       .then(response => response.json())
       .then(data => {
         console.log('Success:', data);
-        alert(`${selectedadmin.username} has been unbanned successfully`)
-        selectedadmin = null;
+        alert(`${selecteduser.username} has been unbanned successfully`)
+        selecteduser = null;
       })
       .catch(error => {
         console.error('Error:', error);

@@ -1,5 +1,11 @@
+// 🔐 Check authentication before anything else
+const token = localStorage.getItem('jwtToken');
+if (!token) {
+    alert("You must be logged in to use this app.");
+    window.location.href = "login.html";
+}
+
 document.addEventListener('DOMContentLoaded', () => {
-	const token = localStorage.getItem('jwtToken');
     const tableBody1 = document.getElementById('showfav');
     const tableBody2 = document.getElementById('showdel');
     const recoverapiUrl = 'http://127.0.0.1:5000/api/v1/recovery';

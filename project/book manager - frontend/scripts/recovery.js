@@ -1,9 +1,15 @@
+// 🔐 Check authentication before anything else
+const token = localStorage.getItem('jwtToken');
+if (!token) {
+    alert("You must be logged in to use this app.");
+    window.location.href = "login.html";
+}
+
 document.getElementById("details").addEventListener("click", () => {
   window.location.href = "book_cr.html";
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-	  const token = localStorage.getItem('jwtToken');
     const tableBody = document.getElementById('dataTableBody');
     const apiUrl = 'http://127.0.0.1:5000/api/v1/recovery'; // Example API endpoint
 
