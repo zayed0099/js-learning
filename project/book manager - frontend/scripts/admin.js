@@ -3,6 +3,8 @@ let selectedadmin = null;
 
 const token = localStorage.getItem('jwtToken');; // or set it manually
 
+
+        // Code for table with admin
 const tableBody2 = document.getElementById('userTable');
 // Show all Admin Data
 fetch('http://127.0.0.1:5000/a/v1/manage', {
@@ -106,7 +108,7 @@ submitBtn.addEventListener('click', () => {
       .catch(error => {
         console.error('Error:', error);
       });
-} // if ends
+  } // if ends
   
   else if (selectedRole === 'admin') {
     const url_update_admin = `http://127.0.0.1:5000/a/v1/manage/${selectedadmin.id}`;
@@ -125,6 +127,47 @@ submitBtn.addEventListener('click', () => {
       .catch(error => {
         console.error('Error:', error);
       });
-}
+  } // else if ends
 
 }); // to end the eventlistener added in submit button
+
+      
+      // Code for completely new user as new admin
+
+document.getElementById('sendDataBtn').addEventListener('click', () => {
+
+    const username = document.getElementById('usernameInput').value;
+    const email = document.getElementById('emailInput').value;
+    const password = document.getElementById('passInput').value;
+
+    const dataToSend = {
+      username : username,
+      password : password,
+      email : email 
+    };
+    
+    fetch('http://127.0.0.1:5000/a/v1/manage', {
+      method: 'POST',
+      headers: {
+              'Content-Type': 'application/json' ,
+              'Authorization': `Bearer ${token}`
+          },
+          body: JSON.stringify(dataToSend)
+    })
+    .then(response => {
+      if (!response.ok){
+        throw new Error('Network response was not ok.');
+      }
+      return response.json();
+    })
+    .then(data => {
+      console.log('Server Response:', data);
+      alert('New Admin cretaed successfully');
+      location.reload();
+    })
+    .catch(error => {
+      console.error('There was a problem with the fetch operation:', error);
+      alert('Failed to send data.')
+    });
+
+});
