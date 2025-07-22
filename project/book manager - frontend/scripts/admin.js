@@ -32,6 +32,10 @@ headers: {
     emailcell.textContent = item.email;
     row.appendChild(emailcell);
 
+    const rolecell = document.createElement('td');
+    rolecell.textContent = item.role;
+    row.appendChild(rolecell);
+
     const updateCell = document.createElement('td');
     const updateBtn = document.createElement('button');
     updateBtn.textContent = 'Update';
@@ -103,6 +107,24 @@ submitBtn.addEventListener('click', () => {
         console.error('Error:', error);
       });
 } // if ends
-
+  
+  else if (selectedRole === 'admin') {
+    const url_update_admin = `http://127.0.0.1:5000/a/v1/manage/${selectedadmin.id}`;
+      fetch(url_update_admin, {
+        method: 'PUT', // or 'PATCH' if updating
+        headers: {
+          'Authorization': `Bearer ${token}` // if using JWT
+        }
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Success:', data);
+        alert(`${selectedadmin.username} added as admin successfully`)
+        selectedadmin = null;
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+}
 
 }); // to end the eventlistener added in submit button
