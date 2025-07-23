@@ -32,11 +32,27 @@
             padding: 8px;
             text-align: center;
         }
+        .top-bar {
+	      background-color: #f1f1f1; /* Light gray */
+	      padding: 15px;
+	      text-align: center;
+	      font-weight: bold;
+	      border-bottom: 1px solid #ccc;
+	      display: flex;              /* Add this */
+		  align-items: center;        /* Optional: vertically align buttons */
+		  gap: 10px;     
+	    }
 	</style>
 </head>
 <body>
 
-	<button id="bookRudf">Manage Favourites/Deleted</button>
+	<div class="top-bar">
+		<button id="dboard">Dashboard</button>
+
+	    <button id="details">Details</button>
+
+		<button id="recover">Recover</button>
+  	</div> <!-- top bar ends -->
 
 	<div class="container">
 	  <div class="left-section">

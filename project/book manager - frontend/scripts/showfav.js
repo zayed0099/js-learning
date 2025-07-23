@@ -94,6 +94,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 });
 
-document.getElementById("bookRudf").addEventListener("click", () => {
+
+// all buttons in frontend
+
+document.getElementById("dboard").addEventListener("click", () => {
+  window.location.href = "book_cr.html";
+});
+
+document.getElementById("details").addEventListener("click", () => {
   window.location.href = "book_rudf.html";
+});
+
+document.getElementById("recover").addEventListener("click", () => {
+  window.location.href = "recovery.html";
 });

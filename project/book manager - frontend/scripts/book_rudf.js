@@ -165,13 +165,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-// Logout Button
-document.getElementById("logout").addEventListener("click", () => {
-  localStorage.removeItem('jwtToken');
-  window.location.href = "login.html";
-});
-
-
 
 // Show modal code
 // Modal control logic
@@ -240,3 +233,15 @@ submitBtn.addEventListener('click', () => {
 }); // for submitBtn
 
 
+// All the buttons in frontend
+document.getElementById("dsboard").addEventListener("click", () => {
+  window.location.href = "book_cr.html";
+});
+
+document.getElementById("recover").addEventListener("click", () => {
+  window.location.href = "recovery.html";
+});
+
+document.getElementById("favdel").addEventListener("click", () => {
+  window.location.href = "showfav.html";
+});

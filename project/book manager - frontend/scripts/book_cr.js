@@ -134,3 +134,8 @@ document.getElementById("recover").addEventListener("click", () => {
 document.getElementById("favdel").addEventListener("click", () => {
   window.location.href = "showfav.html";
 });
+
+document.getElementById("admin").addEventListener("click", () => {
+  window.location.href = "admin.html";
+});
+

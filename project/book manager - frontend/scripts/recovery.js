@@ -5,9 +5,6 @@ if (!token) {
     window.location.href = "login.html";
 }
 
-document.getElementById("details").addEventListener("click", () => {
-  window.location.href = "book_cr.html";
-});
 
 document.addEventListener('DOMContentLoaded', () => {
     const tableBody = document.getElementById('dataTableBody');
@@ -21,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(response => response.json())
         .then(data => {
         	console.log(data);
-        	const books = data.books; // get the array from inside the object
+        	const books = data.del_books; // get the array from inside the object
 
 			    if (!Array.isArray(books)) {
 			        console.error('Expected books array, got:', data);
@@ -79,4 +76,17 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('Error fetching data:', error);
             tableBody.innerHTML = '<tr><td colspan="3"><i>Error loading data.</i></td></tr>';
         });
+});
+
+// All the buttons in frontend
+document.getElementById("dsboard").addEventListener("click", () => {
+  window.location.href = "book_cr.html";
+});
+
+document.getElementById("details").addEventListener("click", () => {
+  window.location.href = "book_rudf.html";
+});
+
+document.getElementById("favdel").addEventListener("click", () => {
+  window.location.href = "showfav.html";
 });

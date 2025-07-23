@@ -40,9 +40,28 @@
             cursor: pointer;
             font-size: 20px;
         }
+        .top-bar {
+          background-color: #f1f1f1; /* Light gray */
+          padding: 15px;
+          text-align: center;
+          font-weight: bold;
+          border-bottom: 1px solid #ccc;
+          display: flex;              /* Add this */
+          align-items: center;        /* Optional: vertically align buttons */
+          gap: 10px;     
+        }
     </style>
 </head>
 <body>
+
+    <div class="top-bar">
+        <button id="dsboard">Dashboard</button>
+
+        <button id="recover">Recover</button>
+
+        <button id="favdel">See All</button>
+
+    </div> <!-- top bar ends -->
 
     <center>
         <h2>All Books</h2>
@@ -84,7 +103,6 @@
             </div>
           </div>
 
-        <button id="logout">Logout</button>
     </center>
 
 <script src="scripts/book_rudf.js"></script>>

@@ -22,6 +22,9 @@
 	      text-align: center;
 	      font-weight: bold;
 	      border-bottom: 1px solid #ccc;
+	      display: flex;              /* Add this */
+		  align-items: center;        /* Optional: vertically align buttons */
+		  gap: 10px;     
 	    }
 	   
     </style>
@@ -34,8 +37,13 @@
 	<button id="recover">Recover</button>
 
 	<button id="favdel">See All</button>
-	<a href="admin.html">Admin Panel</a>
-  </div>
+
+	<button id="admin">Admin Panel</button>
+	
+	<button id="logout" style="margin-left: auto;">Logout</button>
+
+  </div> <!-- top bar ends -->
+
 <center>
 	<h2>Add New Book</h2>
 
@@ -63,10 +71,8 @@
 		</table>
 		<br><br>
 
-	<button id="logout">Logout</button>
 
 <br><br>
-<a href="admin.html">Admin Panel</a>
 </center>
 
 <script src="scripts/book_cr.js"></script>
